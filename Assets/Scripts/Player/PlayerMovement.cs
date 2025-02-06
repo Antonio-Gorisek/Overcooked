@@ -59,7 +59,7 @@ public class PlayerMovement : MonoBehaviour {
     // Returns true if an obstacle is hit, false if the path is clear.
     private bool GetCapsuleCast(Vector3 moveDir) {
         float moveDistance = _movementSpeed * Time.deltaTime;
-        float playerRadius = 0.2f;
+        float playerRadius = 0.5f;
         float playerHeight = 2;
 
         // Check for obstacles in the direction of movement
