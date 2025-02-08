@@ -6,9 +6,7 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField] private float _rotationSpeed = 10;
     private bool isWalking = false;
 
-    void Update() {
-        Movement();
-    }
+    void Update() => Movement();
 
     private void Movement() {
         Vector2 inputVector = GameInput.Instance.GetInputVectorNormalized();

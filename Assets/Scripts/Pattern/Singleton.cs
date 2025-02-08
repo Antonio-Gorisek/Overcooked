@@ -1,20 +1,18 @@
 using UnityEngine;
 
-[HelpURL("https://docs.google.com/document/d/1oEp6sHNLkIlHb_yE7KQcJDd3CRWB1CKEoaNf20HlOek/edit?tab=t.0#heading=h.98u125xf2ipd")]
-public class Singleton<T> : MonoBehaviour where T:Component
-{
+public class Singleton<T> : MonoBehaviour where T : Component {
+    // Static instance of the singleton.
     private static T instance;
 
-    public static T Instance
-    {
-        get
-        {
-            if(instance == null)
-            {
+    // Public property to access the singleton instance.
+    public static T Instance {
+        get {
+            // If the instance is not set, find it in the scene.
+            if (instance == null) {
                 instance = FindFirstObjectByType<T>();
 
-                if(instance == null)
-                {
+                // If the instance is still not found, create a new GameObject and attach the component.
+                if (instance == null) {
                     GameObject gameObject = new GameObject("SingletonController");
                     instance = gameObject.AddComponent<T>();
                 }
@@ -23,14 +21,12 @@ public class Singleton<T> : MonoBehaviour where T:Component
         }
     }
 
-    private void Awake()
-    {
-        if(instance == null)
-        {
-            instance = this as T; 
-        }
-        else
-        {
+    private void Awake() {
+        // If no instance exists, assign this object as the instance.
+        if (instance == null) {
+            instance = this as T;
+        } else {
+            // If an instance already exists, destroy the duplicate.
             Destroy(gameObject);
         }
     }
