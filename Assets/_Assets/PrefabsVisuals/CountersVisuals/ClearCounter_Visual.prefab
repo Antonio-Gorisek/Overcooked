@@ -41,8 +41,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4589716710238282923}
   - component: {fileID: 7632551113671334268}
-  - component: {fileID: 1495912463245663096}
   - component: {fileID: 8677294002348410405}
+  - component: {fileID: 6528998419712813801}
   m_Layer: 6
   m_Name: ClearCounter_Visual
   m_TagString: Untagged
@@ -89,19 +89,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.5, y: 1.5, z: 1.5}
   m_Center: {x: 0, y: 0.5, z: 0}
---- !u!114 &1495912463245663096
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4589716710238282922}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f08c07beae7769a45a71cf0740aa48c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  counerSpawnPoint: {fileID: 1283270922293144437}
 --- !u!114 &8677294002348410405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,7 +102,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selectedGameObject: {fileID: 5413540864805082574}
-  clearCounter: {fileID: 1495912463245663096}
+  clearCounter: {fileID: 0}
+--- !u!114 &6528998419712813801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4589716710238282922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6458bcb981a2a94396a1769cfb8dfe0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  counerSpawnPoint: {fileID: 1283270922293144437}
+  kitchenItemSO: {fileID: 0}
 --- !u!1 &5413540864805082574
 GameObject:
   m_ObjectHideFlags: 0

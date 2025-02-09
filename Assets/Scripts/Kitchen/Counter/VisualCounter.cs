@@ -5,7 +5,11 @@ public class VisualCounter : MonoBehaviour {
     [SerializeField] private GameObject selectedGameObject;
 
     // Reference to the specific ClearCounter this script will monitor.
-    [SerializeField] private ClearCounter clearCounter;
+    private BaseCounter baseCounter;
+
+    private void Awake() {
+        baseCounter = GetComponent<BaseCounter>();
+    }
 
     // Subscribes to the OnSelectedCounter event when the script starts.
     private void Start() {
@@ -15,6 +19,6 @@ public class VisualCounter : MonoBehaviour {
     // Event handler that activates or deactivates the selectedGameObject
     // based on whether the selected counter matches the clearCounter.
     private void Instance_OnSelectedCounter(object sender, PlayerInteraction.OnSelectedCounterEventArgs e) {
-        selectedGameObject.SetActive(e.selectedCounter == clearCounter);
+        selectedGameObject.SetActive(e.selectedCounter == baseCounter);
     }
 }

@@ -1,16 +1,19 @@
 using UnityEngine;
 
-public class ClearCounter : MonoBehaviour
+public class ClearCounter : BaseCounter
 {
-    [SerializeField] private Transform counerSpawnPoint;
     [SerializeField] private KitchenItemSO kitchenItemSO;
 
-
-    public void Interact() {
-        if (kitchenItemSO == null || counerSpawnPoint == null)
-            return;
-
-        Transform kitchenObject = Instantiate(kitchenItemSO.itemPrefb, counerSpawnPoint);
-        Debug.Log(kitchenObject.GetComponent<KitchenObject>().GetKitchenItem().itemName);
+    public override void Interact(PlayerInteraction player) {
+       
+        if(player.HasKitchenObject() == true && HasKitchenObject() == false) 
+        {
+            player.GetKitchenObject().SetKitchenObject(this);
+        } 
+        else if (player.HasKitchenObject() == false && HasKitchenObject() == true) 
+        {
+            GetKitchenObject().SetKitchenObject(player);
+        }
     }
+
 }

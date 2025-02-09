@@ -1,12 +1,16 @@
 using System;
 using UnityEngine;
 
-public class PlayerInteraction : Singleton<PlayerInteraction> {
+public class PlayerInteraction : Singleton<PlayerInteraction>, IKitchenObject {
+
+    [SerializeField] private Transform holdPoint;
+    private KitchenObject kitchenObject;
+
     // LayerMask to define which layers the player can interact with.
     [SerializeField] private LayerMask layerMask;
 
     // Currently selected counter that the player is interacting with.
-    private ClearCounter selectedCounter;
+    private BaseCounter baseCounter;
 
     // Last direction in which the player interacted.
     private Vector3 lastInteraction;
@@ -14,7 +18,7 @@ public class PlayerInteraction : Singleton<PlayerInteraction> {
     // Event triggered when a new counter is selected.
     public event EventHandler<OnSelectedCounterEventArgs> OnSelectedCounter;
     public class OnSelectedCounterEventArgs : EventArgs {
-        public ClearCounter selectedCounter;
+        public BaseCounter selectedCounter;
     }
 
     // Subscribes to the player interaction event at the start.
@@ -23,7 +27,7 @@ public class PlayerInteraction : Singleton<PlayerInteraction> {
 
     // Trigger interaction logic when the player presses the "E" key.
     private void Instance_OnPlayerInteract(object sender, System.EventArgs e) {
-        selectedCounter.Interact();
+        baseCounter?.Interact(this);
     }
 
     // Continuously checks for player interaction each frame.
@@ -46,10 +50,10 @@ public class PlayerInteraction : Singleton<PlayerInteraction> {
         // Cast a ray to detect objects within interaction distance.
         if (Physics.Raycast(transform.position, lastInteraction, out RaycastHit raycastHit, interactionDistance, layerMask)) {
             // Check if the hit object has a ClearCounter component.
-            if (raycastHit.transform.TryGetComponent(out ClearCounter clearCounter)) {
+            if (raycastHit.transform.TryGetComponent(out BaseCounter clearCounter)) {
 
                 // Select the counter if it's different from the currently selected one.
-                if (selectedCounter != clearCounter) {
+                if (baseCounter != clearCounter) {
                     OnSelectCounter(clearCounter);
                 }
             } else {
@@ -63,10 +67,31 @@ public class PlayerInteraction : Singleton<PlayerInteraction> {
     }
 
     // Handles selecting and deselecting counters.
-    private void OnSelectCounter(ClearCounter clearCounter) {
-        selectedCounter = clearCounter;
+    private void OnSelectCounter(BaseCounter clearCounter) {
+        baseCounter = clearCounter;
         OnSelectedCounter?.Invoke(this, new OnSelectedCounterEventArgs {
             selectedCounter = clearCounter
         });
     }
+
+    public void ClearKitchenObject() {
+        kitchenObject = null;
+    }
+
+    public KitchenObject GetKitchenObject() {
+        return kitchenObject;
+    }
+
+    public Transform GetKitchenSpawnPoint() {
+        return holdPoint;
+    }
+
+    public bool HasKitchenObject() {
+        return kitchenObject != null;
+    }
+
+    public void SetKitchenObject(KitchenObject kitchenObject) {
+        this.kitchenObject = kitchenObject;
+    }
+
 }
