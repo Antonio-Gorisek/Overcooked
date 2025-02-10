@@ -20,9 +20,10 @@ public class PlayerMovement : MonoBehaviour {
             transform.position += moveDir * _movementSpeed * Time.deltaTime;
         }
 
-        // Smoothly rotate the player towards the movement direction
-        if(moveDir != Vector3.zero) {
-            transform.forward = Vector3.Slerp(transform.forward, moveDir, _rotationSpeed * Time.deltaTime);
+        // Smoothly rotate the player towards the input direction, even if the player can't move
+        if (inputVector != Vector2.zero) {
+            Vector3 lookDir = new Vector3(inputVector.x, 0, inputVector.y);
+            transform.forward = Vector3.Slerp(transform.forward, lookDir, _rotationSpeed * Time.deltaTime);
         }
 
         // Update walking status
