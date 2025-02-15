@@ -14,7 +14,7 @@ public class GameInput : Singleton<GameInput> {
         inputSystem.Player.Enable();
 
         // Subscribe to the interaction action performed event.
-        inputSystem.Player.Interactions.performed += Interactions_performed;
+        inputSystem.Player.Interaction.performed += Interactions_performed;
     }
 
     // Invokes the OnPlayerInteract event when the interaction input is detected.
