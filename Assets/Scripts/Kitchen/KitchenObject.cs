@@ -25,5 +25,8 @@ public class KitchenObject : MonoBehaviour
         transform.parent = kitchenObject.GetKitchenSpawnPoint();
     }
 
-
+    public void DestroyThis() {
+        kitchenObject.ClearKitchenObject();
+        Destroy(gameObject);
+    }
 }

@@ -22,7 +22,14 @@ public class PlayerInteraction : Singleton<PlayerInteraction>, IKitchenObject {
     }
 
     // Subscribes to the player interaction event at the start.
-    private void Start() => GameInput.Instance.OnPlayerInteract += Instance_OnPlayerInteract;
+    private void Start() {
+        GameInput.Instance.OnPlayerInteract += Instance_OnPlayerInteract;
+        GameInput.Instance.OnPlayerCutting += Instance_OnPlayerCutting;
+    }
+
+    private void Instance_OnPlayerCutting(object sender, bool isCutting) {
+        baseCounter?.CuttingInteract(this, isCutting);
+    }
 
 
     // Trigger interaction logic when the player presses the "E" key.

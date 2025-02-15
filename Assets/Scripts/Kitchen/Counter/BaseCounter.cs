@@ -30,4 +30,9 @@ public class BaseCounter : MonoBehaviour, IKitchenObject
     public virtual void Interact(PlayerInteraction player) {
 
     }
+    
+    public virtual void CuttingInteract(PlayerInteraction player, bool isCutting) {
+
+    }
+
 }
