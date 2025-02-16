@@ -4,13 +4,20 @@ using UnityEngine.UI;
 public class ProgressBar : MonoBehaviour
 {
     [SerializeField] private Slider slider;
-    [SerializeField] private CuttingCounter cuttingCounter;
+    [SerializeField] private GameObject progressBarGO;
 
-    private void Start() {
-        cuttingCounter.OnProgressChanged += CuttingCounter_OnProgressChanged;
+    private IProgressBar progressBar;
+
+
+    private void Awake() {
+        progressBar = progressBarGO.GetComponent<IProgressBar>();
     }
 
-    private void CuttingCounter_OnProgressChanged(object sender, CuttingCounter.OnProgressChangedEventArgs e) {
+    private void Start() {
+        progressBar.OnProgressChanged += ProgressBar_OnProgressChanged;
+    }
+
+    private void ProgressBar_OnProgressChanged(object sender, IProgressBar.OnProgressChangedEventArgs e) {
         slider.value = e.progress;
 
         slider.gameObject.SetActive(e.progress > 0);

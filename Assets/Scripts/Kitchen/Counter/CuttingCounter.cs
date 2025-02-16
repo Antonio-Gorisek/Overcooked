@@ -2,18 +2,14 @@ using System;
 using System.Linq;
 using UnityEngine;
 
-public class CuttingCounter : BaseCounter
+public class CuttingCounter : BaseCounter, IProgressBar
 {
     private bool isPlayerCutting;
     private float cuttingTime;
     private CuttingRecipeSO[] cuttingRecipes;
     private CuttingRecipeSO currentRecipe;
     public event EventHandler<bool> OnPlayerCutItem;
-
-    public event EventHandler<OnProgressChangedEventArgs> OnProgressChanged;
-    public class OnProgressChangedEventArgs : EventArgs {
-        public float progress;
-    }
+    public event EventHandler<IProgressBar.OnProgressChangedEventArgs> OnProgressChanged;
 
     private void Start() {
         cuttingRecipes = ScriptableObjectLoader.LoadAllScriptableObjects<CuttingRecipeSO>("ScriptableObjects/CuttingRecipe");
@@ -55,7 +51,7 @@ public class CuttingCounter : BaseCounter
         OnPlayerCutItem?.Invoke(this, true);
 
         float progress = Mathf.Clamp01(cuttingTime / currentRecipe.cuttingTime);
-        OnProgressChanged?.Invoke(this, new OnProgressChangedEventArgs { progress = progress });
+        OnProgressChanged?.Invoke(this, new IProgressBar.OnProgressChangedEventArgs { progress = progress });
 
         if (cuttingTime >= currentRecipe.cuttingTime) {
             ResetCutting();
@@ -64,7 +60,7 @@ public class CuttingCounter : BaseCounter
     }
 
     void ResetCutting() {
-        OnProgressChanged?.Invoke(this, new OnProgressChangedEventArgs { progress = 0 });
+        OnProgressChanged?.Invoke(this, new IProgressBar.OnProgressChangedEventArgs { progress = 0 });
 
         OnPlayerCutItem?.Invoke(this, false);
         cuttingTime = 0;

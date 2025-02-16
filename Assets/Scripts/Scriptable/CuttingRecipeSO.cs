@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Kitchen/Item/CuttingRecipeSO")]
+[CreateAssetMenu(menuName = "Kitchen/Recipe/CuttingRecipeSO")]
 public class CuttingRecipeSO : ScriptableObject
 {
     public float cuttingTime;

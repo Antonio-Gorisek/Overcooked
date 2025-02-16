@@ -749,6 +749,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7616345154128794468, guid: 08461d8123d7d354a9ccb7f8a7f84f36, type: 3}
+      propertyPath: progressBarGO
+      value: 
+      objectReference: {fileID: 4589716710238282922}
+    - target: {fileID: 7616345154128794468, guid: 08461d8123d7d354a9ccb7f8a7f84f36, type: 3}
       propertyPath: cuttingCounter
       value: 
       objectReference: {fileID: 373563922593145531}
