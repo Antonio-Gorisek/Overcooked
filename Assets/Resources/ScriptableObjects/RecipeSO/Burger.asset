@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f3c5d8575ecfffc418c319b98024a374, type: 3}
-  m_Name: Tomato_Slices
+  m_Script: {fileID: 11500000, guid: 328b546a6e292d445aa16a400051fa49, type: 3}
+  m_Name: Burger
   m_EditorClassIdentifier: 
-  itemPrefb: {fileID: 3812876574508226176, guid: fb403d1efda6baf4190c507841617408, type: 3}
-  icon: {fileID: 21300000, guid: c9f08c3c1ae2a364aaeaa3712540b1d4, type: 3}
-  itemName: Tomato Slices
+  kitchenItemSoList:
+  - {fileID: 11400000, guid: e93fe2c31f97b8d458cea6a0a200b0c7, type: 2}
+  - {fileID: 11400000, guid: dbb47d15f0cee98459a7206dfd71948c, type: 2}
+  recipeName: Burger

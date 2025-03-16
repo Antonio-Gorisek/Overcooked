@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: MeatPattyCooked
   m_EditorClassIdentifier: 
   itemPrefb: {fileID: 3812876574508226176, guid: e879ff1414d1dd64c9ad7b04bffdfaef, type: 3}
+  icon: {fileID: 21300000, guid: f1f50c7ef90b19741b26f2040806cf56, type: 3}
   itemName: Meat Patty Cooked

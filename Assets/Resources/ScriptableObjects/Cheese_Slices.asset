@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: Cheese_Slices
   m_EditorClassIdentifier: 
   itemPrefb: {fileID: 3812876574508226176, guid: 17cb28a1a37fd7f44ae6e1ad2aa9da78, type: 3}
+  icon: {fileID: 21300000, guid: 549cb4f2b86d1b84d8cd41c1cfde26c8, type: 3}
   itemName: Cheese Slices
