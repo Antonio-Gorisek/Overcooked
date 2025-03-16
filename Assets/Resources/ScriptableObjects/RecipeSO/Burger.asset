@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 328b546a6e292d445aa16a400051fa49, type: 3}
+  m_Name: Burger
+  m_EditorClassIdentifier: 
+  kitchenItemSoList:
+  - {fileID: 11400000, guid: e93fe2c31f97b8d458cea6a0a200b0c7, type: 2}
+  - {fileID: 11400000, guid: dbb47d15f0cee98459a7206dfd71948c, type: 2}
+  recipeName: Burger

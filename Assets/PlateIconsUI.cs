@@ -20,9 +20,9 @@ public class PlateIconsUI : MonoBehaviour
             if (kitchenItemSO.itemName == e.kitchenItemSO.itemName) {
 
                 backgroundUI.gameObject.SetActive(true);
-                Transform iconItem = Instantiate(iconPrefab, Vector3.zero, Quaternion.identity, iconsParent);
+                Transform iconItem = Instantiate(iconPrefab, iconsParent);
+                iconItem.localPosition = Vector3.zero;
                 iconItem.GetComponent<Image>().sprite = kitchenItemSO.icon;
-                iconItem.transform.position = Vector3.zero;
 
             }
         }
